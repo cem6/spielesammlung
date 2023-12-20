@@ -35,12 +35,12 @@ int main()
 
 
     bool over = false;
-    int xPos = 3;
+    int xPos = 15;
     int xDir = 0;
     int yPosBall = 6;
     int xPosBall = 23;
     int yDirBall = -1;
-    int xDirBall = 1;
+    int xDirBall = -1;
     bool moveBall = false;
     int Blocks[4][10] = {(10, 0), (10, 0), (10, 0), (10, 0)};
     std::string paddle = "\\______/";
@@ -134,17 +134,24 @@ int main()
             }else if (xPosBall == xPos+1 || xPosBall == xPos+2) {   // left
                 xDirBall = -1;
                 yDirBall = -1;
-            } else if (xPosBall == xPos+3) {    // middle
+            } else if (xPosBall == xPos+3) {                        // middle
                 xDirBall = 0;
                 yDirBall = -1;
             } else if (xPosBall == xPos+4 || xPosBall == xPos+5) {    //  right
                 xDirBall = 1;
                 yDirBall = -1;
-            } else if (xPosBall == xPos+6) {    // far right
+            } else if (xPosBall == xPos+6) {                          // far right
                 xDirBall = 2;
                 yDirBall = -1;
             }
-
+            else if (xPosBall == xPos+7) {                          // invisible hitbox
+                xDirBall = 3;
+                yDirBall = -1;
+            }
+            else if (xPosBall == xPos-1) {                          // invisible hitbox
+                xDirBall = -3;
+                yDirBall = -1;
+            }
         }
 
 
@@ -162,7 +169,7 @@ int main()
 
                 // ich habe keine ahnung was hier passiert und bedanke mich beim github copilot gott
                 if (Blocks[i][j] != -1) {
-                    mvwaddstr(win, i+1, (j*4)+1, ".  .");
+                    mvwaddstr(win, i+1, (j*4)+1, ":..:");   // scrren tearing when "    " as block
                     mvwchgat(win, i+1, (j*4)+1, 4, A_REVERSE, c, NULL);
                 }
                 c++;
@@ -175,7 +182,7 @@ int main()
                             score++;
                             Blocks[i][j] = -1;
                             yDirBall *= -1;
-                            xDirBall *= -1;
+                            // xDirBall *= -1;
                         }
                     }
                 }
