@@ -1,3 +1,0 @@
-/home/cem/code/cpp/gui/spielesammlung/rakete/cmake-build-debug/CMakeFiles/rakete.dir
-/home/cem/code/cpp/gui/spielesammlung/rakete/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/cem/code/cpp/gui/spielesammlung/rakete/cmake-build-debug/CMakeFiles/rebuild_cache.dir
